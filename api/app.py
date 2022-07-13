@@ -1,13 +1,16 @@
-from flask import Flask,  request, jsonify, make_response
+from flask import Flask,  request, jsonify, make_response,render_template
 from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
-from flask import render_template
 
 
 
 
 # create an instance of flask
-app = Flask(__name__)
+app = Flask(__name__, template_folder='temp')
+@app.route('/')
+
+def index():
+ return render_template('web.html')
 # creating an API object
 api = Api(app)
 # create database
