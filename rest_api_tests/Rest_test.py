@@ -9,15 +9,15 @@ put = '/put/'
 delete = '/delete/'
 
 
-def testGetRequest_01():
-
-        requests.get(url)
-        v_response = requests.get(url)
-        v_content = v_response.text
-        v_statuscode = v_response.status_code
-        v_json_data = json.loads(v_content)
-        v_Employees_elemnts = jsonpath.jsonpath(v_json_data, 'Employees')
-        assert v_statuscode == 200
+# def testGetRequest_01():
+#
+#         requests.get(url)
+#         v_response = requests.get(url)
+#         v_content = v_response.text
+#         v_statuscode = v_response.status_code
+#         v_json_data = json.loads(v_content)
+#         v_Employees_elemnts = jsonpath.jsonpath(v_json_data, 'Employees')
+#         assert v_statuscode == 200
 
 def testPostRequest_02():
         requests.get(url)
