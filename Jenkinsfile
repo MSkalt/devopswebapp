@@ -9,14 +9,14 @@ pipeline {
                
             }
         }
-        stage('run python') {
+        stage('run rest app') {
             steps {
                 script {
                     if (checkOs() == 'Windows') {
-                        cd api
-                        bat 'app.py'
+                      
+                        bat 'api\app.py'
                     } else {
-                        sh 'app.py'
+                        sh 'api\app.py'
                     }
                 }
             }
