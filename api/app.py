@@ -6,11 +6,15 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 # create an instance of flask
-app = Flask(__name__, template_folder='temp')
+app = Flask(__name__, template_folder='templates')
 @app.route('/')
 
-def index():
+def get_all_Employees():
+    
  return render_template('web.html')
+
+
+
 # creating an API object
 api = Api(app)
 # create database
@@ -41,8 +45,8 @@ class GetEmployee(Resource):
             emp_data = {'Id': emp.id, 'FirstName': emp.firstname, 'LastName': emp.lastname, 'Gender': emp.gender,
                         'Salary': emp.salary}
             emp_list.append(emp_data)
-        return {"Employees": emp_list}, 200
-
+        return {"Employees": emp_list} , "<H1 id='Employee'>" + emp_list + "</H>", 200
+        #return "<H1 id='Employee'>" + emp_list + "</H>"
 # For Post request to http://localhost:5000/employee
 class AddEmployee(Resource):
     def post(self):
@@ -89,6 +93,8 @@ api.add_resource(GetEmployee, '/')
 api.add_resource(AddEmployee, '/add')
 api.add_resource(UpdateEmployee, '/update/<int:id>')
 api.add_resource(DeleteEmployee, '/delete/<int:id>')
+
+
 
 #
 if __name__ == '__main__':
