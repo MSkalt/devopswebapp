@@ -6,7 +6,7 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('* * * * *')])])
                 }
-                git 'https://github.com/MSkalt/devopswebapp.git'
+               
             }
         }
         stage('run python') {
