@@ -23,7 +23,7 @@ pipeline {
         stage('Rest API test') {
             steps {
                 script {
-                    bat 'rest_api_tests/testSuite01.py'
+                    bat 'rest_api_tests\testSuite01.py'
                 }
                 
                 
