@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('checkout repo') {
+        stage('checkout') {
             steps {
                 script {
                     properties([pipelineTriggers([pollSCM('* * * * *')])])
@@ -9,16 +9,15 @@ pipeline {
                 git 'https://github.com/MSkalt/devopswebapp.git'
             }
         }
-        stage('run backend server') {
+        stage('run python') {
             steps {
                 script {
                     if (checkOs() == 'Windows') {
-                        bat 'start/min python api/app.py'
+                        bat 'python 1.py'
                     } else {
-                        sh 'nuhup python api/app.py'
+                        sh 'python 1.py'
                     }
                 }
-			
             }
         }
     }
