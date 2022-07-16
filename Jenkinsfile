@@ -13,9 +13,10 @@ pipeline {
             steps {
                 script {
                     if (checkOs() == 'Windows') {
-                        bat '/api/app.py'
+                        cd api
+                        bat 'app.py'
                     } else {
-                        sh '/api/app.py'
+                        sh 'app.py'
                     }
                 }
             }
