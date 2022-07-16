@@ -8,11 +8,11 @@ import signal
 
 
 # create an instance of flask
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='api/templates')
 @app.route('/')
 
 def get_all_Employees():
-
+ #
  return render_template('web.html')
 
 

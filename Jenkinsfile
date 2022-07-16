@@ -20,6 +20,15 @@ pipeline {
                 }
             }
         }
+        stage('Rest API test') {
+            steps {
+                script {
+                    bat 'rest_api_tests\\Rest_test.py'
+                }
+                
+                
+            }
+        }
     }
 }
 
