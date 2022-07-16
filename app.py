@@ -8,7 +8,7 @@ import signal
 
 
 # create an instance of flask
-app = Flask(__name__, template_folder='api/templates')
+app = Flask(__name__, template_folder='web/templates')
 @app.route('/')
 
 def get_all_Employees():

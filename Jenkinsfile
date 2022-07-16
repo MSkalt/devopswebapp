@@ -9,7 +9,7 @@ pipeline {
                
             }
         }
-        stage('run python') {
+        stage('run rest app') {
             steps {
                 script {
                     if (checkOs() == 'Windows') {
@@ -20,7 +20,7 @@ pipeline {
                 }
             }
         }
-        stage('Rest API test') {
+        stage('run rest API test') {
             steps {
                 script {
                     bat 'pytest rest_api_tests\\Rest_test.py'
