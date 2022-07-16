@@ -6,7 +6,7 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('* * * * *')])])
                 }
-                
+                git 'https://github.com/MSkalt/devopswebapp.git'
             }
         }
         stage('run python') {
@@ -18,6 +18,15 @@ pipeline {
                         sh 'app.py'
                     }
                 }
+            }
+        }
+        stage('Rest API test') {
+            steps {
+                script {
+                    bat 'rest_api_tests/testSuite01.py'
+                }
+                
+                
             }
         }
     }
