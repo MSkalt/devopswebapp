@@ -6,7 +6,18 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('* * * * *')])])
                 }
-                git 'https://github.com/MSkalt/devopswebapp.git'
+
+            }
+        }
+        stage('run python') {
+            steps {
+                script {
+                    if (checkOs() == 'Windows') {
+                        bat 'api/app.py'
+                    } else {
+                        sh 'api/app.py'
+                    }
+                }
             }
         }
         stage('run python') {
@@ -16,10 +27,6 @@ pipeline {
                         bat 'python 1.py'
                     } else {
                         sh 'python 1.py'
-                    }
-                }
-            }
-        }
     }
 }
 
