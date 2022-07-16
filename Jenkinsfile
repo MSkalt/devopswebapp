@@ -13,9 +13,9 @@ pipeline {
             steps {
                 script {
                     if (checkOs() == 'Windows') {
-                        bat 'app.py'
+                        bat 'python app.py'
                     } else {
-                        sh 'app.py'
+                        sh 'python app.py'
                     }
                 }
             }
@@ -23,10 +23,19 @@ pipeline {
         stage('Rest API test') {
             steps {
                 script {
-                    bat 'rest_api_tests\\Rest_test.py'
+                    bat 'pytest rest_api_tests\\Rest_test.py'
                 }
                 
                 
+            }
+        }
+        stage('clean environment') {
+            steps {
+                script {
+                    bat 'python clean_environment.py'
+                }
+
+
             }
         }
     }
