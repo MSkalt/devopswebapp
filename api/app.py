@@ -1,6 +1,8 @@
 from flask import Flask,  request, jsonify, make_response,render_template
 from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
+import os
+import signal
 
 
 
@@ -10,7 +12,7 @@ app = Flask(__name__, template_folder='templates')
 @app.route('/')
 
 def get_all_Employees():
-    
+
  return render_template('web.html')
 
 
@@ -95,7 +97,10 @@ api.add_resource(UpdateEmployee, '/update/<int:id>')
 api.add_resource(DeleteEmployee, '/delete/<int:id>')
 
 
-
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.CTRL_C_EVENT)
+    return 'Server stopped'
 #
 if __name__ == '__main__':
     app.run(debug=True)
